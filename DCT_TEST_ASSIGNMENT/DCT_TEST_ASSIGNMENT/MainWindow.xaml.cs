@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using DCT_TEST_ASSIGNMENT.ViewModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,8 @@ namespace DCT_TEST_ASSIGNMENT
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = new HomeVM();
         }
     }
 }
