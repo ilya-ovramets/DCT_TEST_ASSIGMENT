@@ -21,7 +21,7 @@ namespace DCT_TEST_ASSIGNMENT
         {
             InitializeComponent();
 
-            this.DataContext = new HomeVM();
+            this.DataContext = new MainViewModel();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DCT_TEST_ASSIGNMENT.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace DCT_TEST_ASSIGNMENT.VIew
         public Home()
         {
             InitializeComponent();
+
+            this.DataContext = new HomeViewModel();
         }
     }
 }

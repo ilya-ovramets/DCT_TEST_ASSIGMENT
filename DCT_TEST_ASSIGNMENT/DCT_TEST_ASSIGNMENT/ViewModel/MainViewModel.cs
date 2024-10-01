@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace DCT_TEST_ASSIGNMENT.ViewModel
 {
-    internal class HomeVM : INotifyPropertyChanged
+    internal class MainViewModel : INotifyPropertyChanged
     {
         private object _curentValue;
         
@@ -24,7 +24,7 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
         public ICommand ShowHomePage { get; }
         public ICommand ShowConverterPage { get; }
 
-        public HomeVM() 
+        public MainViewModel() 
         {
             CurrentValue = new Home();
 
