@@ -15,6 +15,10 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
 
         public ObservableCollection<CryptoMainModel> CryptoCurrencies { get; private set; }
 
+        private int N = 10;
+        private int accuracy = 4;
+
+
         public HomeViewModel()
         {
             _APIWorkingModel = new APIWorkingModel();
@@ -25,9 +29,18 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
         private async void LoadData()
         {
             var currencies = await _APIWorkingModel.GetTopCryptoCurrenciesAsync();
+
+            int i = 0;
             foreach (var currency in currencies)
             {
+                i++;
+                currency.Price = Math.Round(currency.Price,accuracy);
+                currency.CoinCapitalization = Math.Round(currency.CoinCapitalization, 1);
                 CryptoCurrencies.Add(currency);
+                if (i > N) 
+                {
+                    break;
+                }
             }
         }
 

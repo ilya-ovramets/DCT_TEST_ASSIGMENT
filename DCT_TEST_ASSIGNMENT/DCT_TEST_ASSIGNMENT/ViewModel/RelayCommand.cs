@@ -33,5 +33,6 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
             add => CommandManager.RequerySuggested += value;
             remove => CommandManager.RequerySuggested -= value;
         }
+
     }
 }

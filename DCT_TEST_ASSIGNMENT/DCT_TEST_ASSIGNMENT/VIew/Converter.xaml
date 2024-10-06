@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DCT_TEST_ASSIGNMENT.VIew"
              mc:Ignorable="d" 
-             >
+             d:Width="800" d:Height="450"
+             d:Background="White">
     <Grid>
-        <TextBlock Text="This Converter Page" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF0C41E6"/>
+        
     </Grid>
 </UserControl>

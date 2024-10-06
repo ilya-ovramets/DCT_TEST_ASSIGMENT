@@ -6,24 +6,43 @@
         xmlns:local="clr-namespace:DCT_TEST_ASSIGNMENT"
         xmlns:VIew="clr-namespace:DCT_TEST_ASSIGNMENT.VIew" x:Class="DCT_TEST_ASSIGNMENT.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        Background="Transparent">
+        Title="MainWindow" Height="500" Width="900"
+        Background="White">
 
-    
+
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="228"/>
             <ColumnDefinition Width="622"/>
         </Grid.ColumnDefinitions>
-        <Border Background="#212529"
-                CornerRadius="25"/>
+        <Border Background="#FF252B31"
+                />
         <StackPanel>
-            <Button Content="Main"  Height="39" FontFamily="Times New Roman" FontSize="20" Command = "{Binding ShowHomePage}" />
-            <Button Content="Converter"  Height="43" FontFamily="Times New Roman" FontSize="20" Command = "{Binding ShowConverterPage}" />
+            <Button Content="Main"  Height="39" FontFamily="Times New Roman" FontSize="20" Command = "{Binding ShowHomePage}" Margin="10">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="Converter"  Height="43" FontFamily="Times New Roman" FontSize="20" Command = "{Binding ShowConverterPage}" Margin="10">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="Details"  Height="43" FontFamily="Times New Roman" FontSize="20" Command = "{Binding ShowDetailsPage}" Margin="10">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
 
-        <ContentControl Grid.Column="1" Content="{Binding CurrentValue}" />
+        <ContentControl Grid.Column="1" Content="{Binding CurrentValue}" Foreground="#FFFBF8F8" Background="White" HorizontalAlignment="Left" Width="672" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
 
     </Grid>
 </Window>

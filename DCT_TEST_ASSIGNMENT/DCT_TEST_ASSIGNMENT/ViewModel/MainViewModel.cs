@@ -24,12 +24,18 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
         public ICommand ShowHomePage { get; }
         public ICommand ShowConverterPage { get; }
 
+        public ICommand ShowDetailsPage { get; }
+
+
         public MainViewModel() 
         {
             CurrentValue = new Home();
 
             ShowHomePage = new RelayCommand(o => CurrentValue= new Home());
+
             ShowConverterPage = new RelayCommand(o => CurrentValue= new Converter());
+
+            ShowDetailsPage = new RelayCommand(o => CurrentValue = new Details());
 
         }
 

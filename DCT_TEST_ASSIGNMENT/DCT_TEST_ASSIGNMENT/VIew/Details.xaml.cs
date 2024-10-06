@@ -17,15 +17,15 @@ using System.Windows.Shapes;
 namespace DCT_TEST_ASSIGNMENT.VIew
 {
     /// <summary>
-    /// Interaction logic for Converter.xaml
+    /// Interaction logic for Details.xaml
     /// </summary>
-    public partial class Converter : UserControl
+    public partial class Details : UserControl
     {
-        public Converter()
+        public Details()
         {
             InitializeComponent();
 
-            this.DataContext = new ConverterViewModel();
+            this.DataContext = new DetailsViewModel();
         }
     }
 }
