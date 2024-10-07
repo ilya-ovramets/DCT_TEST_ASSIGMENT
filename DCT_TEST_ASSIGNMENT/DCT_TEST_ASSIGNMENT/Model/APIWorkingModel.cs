@@ -51,8 +51,10 @@ namespace DCT_TEST_ASSIGNMENT.Model
                     {
                         CoinId = crypto.GetProperty("id").GetString(),
                         Name = crypto.GetProperty("name").GetString(),
+                        Rank = int.Parse(crypto.GetProperty("rank").GetString()),
                         Price = decimal.Parse(crypto.GetProperty("priceUsd").ToString(), CultureInfo.InvariantCulture),
-                        CoinCapitalization = decimal.Parse(crypto.GetProperty("marketCapUsd").ToString(), CultureInfo.InvariantCulture)
+                        CoinCapitalization = decimal.Parse(crypto.GetProperty("marketCapUsd").ToString(), CultureInfo.InvariantCulture),
+                        Explorer = crypto.GetProperty("explorer").GetString()
                     };
 
                     cryptoList.Add(cryptoModel);

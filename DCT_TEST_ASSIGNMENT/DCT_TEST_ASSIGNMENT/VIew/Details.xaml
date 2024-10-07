@@ -8,32 +8,109 @@
       d:DesignHeight="700" d:DesignWidth="800"
       d:Background="White">
 
-    <Grid>
+    <Grid Margin="10">
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="170" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Margin="10,10,10,0" Grid.Row="0" Height="166" VerticalAlignment="Top">
-            <Label Content="Find by name or code" Width="232" Height="37" FontFamily="Times New Roman" FontSize="24" />
-            <TextBox Width="203" Height="34" Margin="10"
-                     Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" FontFamily="Times New Roman" FontSize="24" 
-                     />
-            <Button Content="Search" Width="139" Height="48" 
-                    Command="{Binding SearchCommand}" FontFamily="Times New Roman" FontSize="36"/>
-        </StackPanel>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Search-->
+            <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="10" Padding="10" Grid.Column="0" Margin="0,0,10,10">
+                <StackPanel>
+                    <Label Content="Find by name or code" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold" />
+                    <TextBox  Width="160" Height="30" Margin="10,10,0,10"
+                         Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged }" 
+                         FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" >
+                    </TextBox>
+                    <Button Content="See Details" Width="150" Height="40" 
+                        Command="{Binding SearchCommand}" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                </StackPanel>
+            </Border>
 
-        <StackPanel Grid.Row="1" Margin="10">
-            <Label Content="Selected Cryptocurrency Details" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" />
 
-            <TextBlock Text="{Binding SelectedCurrency.CoinId}" FontFamily="Times New Roman" FontSize="18" />
-            <TextBlock Text="{Binding SelectedCurrency.Name}" FontFamily="Times New Roman" FontSize="18" />
-            <TextBlock Text="{Binding SelectedCurrency.Price}" FontFamily="Times New Roman" FontSize="18" />
-            <TextBlock Text="{Binding SelectedCurrency.CoinCapitalization}" FontFamily="Times New Roman" FontSize="18" />
+            <!-- Search Suggestions -->
+            <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="10" Padding="10" Grid.Column="1" Margin="0,0,10,10">
+                <StackPanel>
+                    <Label Content="Search Results" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold" />
+                    <ListBox Height="150" ItemsSource="{Binding SearchSuggestions}" SelectedItem="{Binding SelectedCurrency , Mode=TwoWay}" BorderBrush="Gray" BorderThickness="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding CoinId}" Width="150" FontFamily="Times New Roman" FontSize="16" />
+                                    <TextBlock Text="{Binding Name}" Width="150" FontFamily="Times New Roman" FontSize="16" Margin="10,0,0,0" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Border>
+        </Grid>
 
-            <!-- Додаткові поля -->
-            <!-- Додайте інші поля, які бажаєте відобразити -->
-        </StackPanel>
+
+        <!-- Details -->
+        <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="10" Padding="10" Grid.Row="1" Margin="0,0,10,0">
+
+            <WrapPanel  Margin="10" Orientation="Vertical">
+
+                <Label Content="Crypto currency details" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold" />
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Coin ID -->
+                    <Label Content="Coin ID:" FontFamily="Times New Roman" FontSize="16" Grid.Row="0" Grid.Column="0" />
+                    <Label Content="{Binding SelectedCurrency.CoinId}" FontFamily="Times New Roman" FontSize="16" Grid.Row="0" Grid.Column="1" />
+
+                    <!-- Name -->
+                    <Label Content="Name:" FontFamily="Times New Roman" FontSize="16" Grid.Row="1" Grid.Column="0" />
+                    <Label Content="{Binding SelectedCurrency.Name}" FontFamily="Times New Roman" FontSize="16" Grid.Row="1" Grid.Column="1" />
+
+                    <!-- Rank -->
+                    <Label Content="Rank:" FontFamily="Times New Roman" FontSize="16" Grid.Row="2" Grid.Column="0" />
+                    <Label Content="{Binding SelectedCurrency.Rank}" FontFamily="Times New Roman" FontSize="16" Grid.Row="2" Grid.Column="1" />
+
+
+                    <!-- Price -->
+                    <Label Content="Price:" FontFamily="Times New Roman" FontSize="16" Grid.Row="3" Grid.Column="0" />
+                    <Label Content="{Binding SelectedCurrency.Price}" FontFamily="Times New Roman" FontSize="16" Grid.Row="3" Grid.Column="1" />
+
+                    <!-- Capitalization -->
+                    <Label Content="Capitalization:" FontFamily="Times New Roman" FontSize="16" Grid.Row="4" Grid.Column="0" />
+                    <Label Content="{Binding SelectedCurrency.CoinCapitalization}" FontFamily="Times New Roman" FontSize="16" Grid.Row="4" Grid.Column="1" />
+                </Grid>
+ 
+                <Button Height="38" Content="Open site curent crypto" Command="{Binding OpenSiteCommand}" Margin="13" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold"  >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                
+                
+            </WrapPanel>
+
+        </Border>
+
 
     </Grid>
 </UserControl>

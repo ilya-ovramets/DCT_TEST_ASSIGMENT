@@ -1,9 +1,12 @@
 ﻿using DCT_TEST_ASSIGNMENT.Model;
+using System.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,12 +18,15 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
     {
         private string _searchQuery;
 
-        private CryptoMainModel _selectedCurrency;
+        private List<CryptoMainModel> _SearchSuggestions;
 
         private List<CryptoMainModel> _CryptoColection;
 
         private readonly APIWorkingModel _APIWorkingModel;
 
+
+        //Selected item
+        private CryptoMainModel _selectedCurrency;
         public CryptoMainModel SelectedCurrency
         {
             get => _selectedCurrency;
@@ -31,7 +37,23 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
             }
         }
 
+
+        public List<CryptoMainModel> SearchSuggestions
+        {
+            get => _SearchSuggestions;
+            set
+            {
+                _SearchSuggestions = value;
+                OnPropertyChanged(nameof(SearchSuggestions));
+            }
+        }
+
+
+
         public ICommand SearchCommand { get; }
+
+        public ICommand OpenSiteCommand { get; }
+
 
         public DetailsViewModel()
         {
@@ -39,7 +61,22 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
 
             SearchCommand = new RelayCommand(Search);
 
+            OpenSiteCommand = new RelayCommand(OpenSite);
+
             GetCrypto();
+        }
+
+
+        private void OpenSite(object paramtr)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(_selectedCurrency.Explorer) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private async void GetCrypto()
@@ -52,36 +89,31 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
             get => _searchQuery;
             set
             {
-                _searchQuery = value;
-                OnPropertyChanged(nameof(SearchQuery));
-                FilterCryptoCurrencies();
+                if (_searchQuery != value)
+                {
+                    _searchQuery = value;
+                    OnPropertyChanged(nameof(SearchQuery));
+                    FilterCryptoCurrencies();
+                }
             }
         }
 
         private void Search(object parametr)
         {
-            FilterCryptoCurrencies();
+            
         }
 
         
 
-        private async void FilterCryptoCurrencies()
+        private void FilterCryptoCurrencies()
         {
-            if (string.IsNullOrEmpty(SearchQuery))
-            {
-                MessageBox.Show("Plase write some text", "Title", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            if (string.IsNullOrEmpty(SearchQuery)) { }
             else
             {
                 var filtered = _CryptoColection.Where(c => c.Name.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase) ||
                                 c.CoinId.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
 
-                if (filtered.Count == 0) 
-                {
-                    MessageBox.Show("No matching cryptocurrencies found.", "Ok", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-
-                SelectedCurrency = filtered.FirstOrDefault(); ;
+                SearchSuggestions = filtered;
                 
             }
 

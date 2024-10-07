@@ -42,7 +42,7 @@
             </Button>
         </StackPanel>
 
-        <ContentControl Grid.Column="1" Content="{Binding CurrentValue}" Foreground="#FFFBF8F8" Background="White" HorizontalAlignment="Left" Width="672" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+        <ContentControl Grid.Column="1" Content="{Binding CurrentValue}" Foreground="#FFFBF8F8" Background="White" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
 
     </Grid>
 </Window>
