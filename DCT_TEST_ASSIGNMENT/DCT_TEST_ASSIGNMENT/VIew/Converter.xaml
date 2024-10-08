@@ -6,8 +6,38 @@
              xmlns:local="clr-namespace:DCT_TEST_ASSIGNMENT.VIew"
              mc:Ignorable="d" 
              d:Width="800" d:Height="450"
-             d:Background="White">
+             d:Background="White" >
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="10" Padding="10" Grid.Column="0" Margin="0,0,10,10">
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20">
+                <Label Content="Amount:" VerticalAlignment="Center" Margin="0,0,10,0" FontFamily="Times New Roman" FontSize="16"/>
+                <TextBox Width="200" Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" FontFamily="Times New Roman" FontSize="16" />
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="10" Padding="10" Grid.Row="1" Margin="0,0,10,10">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20">
+                <Label Content=" From " VerticalAlignment="Center" Margin="10,0" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
+                <ComboBox Width="150" ItemsSource="{Binding CryptoCurrencies}" 
+          DisplayMemberPath="Name" SelectedItem="{Binding FromCurrency}"/>
+                <Label Content=" to " VerticalAlignment="Center" Margin="10,0" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
+                <ComboBox Width="150" ItemsSource="{Binding CryptoCurrencies}" DisplayMemberPath="Name"  SelectedItem="{Binding ToCurrency}" HorizontalAlignment="Right"/>
+
+                <Button  Content="Convert" Command="{Binding ConvertCommand}" Margin="50,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="20" Height="35" Width="106"/>
+            </StackPanel>
+        </Border>
+
+
+        <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="10" Padding="10" Grid.Row="2" Margin="0,0,10,10">
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="20">
+                <Label Content="Converting results: " FontSize="16"/>
+                <Label  Content="{Binding ConversionResult}"  FontSize="16" />
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

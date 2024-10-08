@@ -1,6 +1,7 @@
 ﻿using DCT_TEST_ASSIGNMENT.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +28,6 @@ namespace DCT_TEST_ASSIGNMENT.VIew
 
             this.DataContext = new ConverterViewModel();
         }
+
     }
 }

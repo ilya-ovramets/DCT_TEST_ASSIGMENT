@@ -20,6 +20,8 @@ namespace DCT_TEST_ASSIGNMENT.Model
         public APIWorkingModel()
         {
             
+
+            string apiKay = Environment.GetEnvironmentVariable("COINCAP_API_KEY");
             _httpClient = new HttpClient();
         }
 

@@ -7,6 +7,7 @@
         xmlns:VIew="clr-namespace:DCT_TEST_ASSIGNMENT.VIew" x:Class="DCT_TEST_ASSIGNMENT.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="900"
+        MinHeight="100" MinWidth="200"
         Background="White">
 
 
@@ -14,7 +15,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="228"/>
-            <ColumnDefinition Width="622"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Border Background="#FF252B31"
                 />
@@ -42,7 +43,7 @@
             </Button>
         </StackPanel>
 
-        <ContentControl Grid.Column="1" Content="{Binding CurrentValue}" Foreground="#FFFBF8F8" Background="White" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+        <ContentControl Grid.Column="1" Content="{Binding CurrentValue}" Foreground="#FFFBF8F8" Background="White" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="5,5,5,5" />
 
     </Grid>
 </Window>

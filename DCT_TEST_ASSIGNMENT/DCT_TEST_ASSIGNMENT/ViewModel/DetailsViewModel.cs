@@ -98,10 +98,7 @@ namespace DCT_TEST_ASSIGNMENT.ViewModel
             }
         }
 
-        private void Search(object parametr)
-        {
-            
-        }
+        
 
         
 

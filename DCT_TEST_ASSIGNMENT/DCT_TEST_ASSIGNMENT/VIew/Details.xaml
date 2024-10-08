@@ -29,8 +29,7 @@
                          Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged }" 
                          FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" >
                     </TextBox>
-                    <Button Content="See Details" Width="150" Height="40" 
-                        Command="{Binding SearchCommand}" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                    <Label Content="Select crypto currency right =>" Width="264" Height="40" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,0,0,0" />
                 </StackPanel>
             </Border>
 
